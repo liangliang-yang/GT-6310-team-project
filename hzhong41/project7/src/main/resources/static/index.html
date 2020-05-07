@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>CS6310 Course Management System</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="css/main.css" rel="stylesheet">
+
+    <!-- Template styles -->
+    <style>
+        /* TEMPLATE STYLES */
+        
+        html,
+        body,
+        .view {
+            height: 100%;
+        }
+
+        footer.page-footer {
+            background-color: #3c4f74;
+            margin-top: 2rem;
+        }
+        
+        /*Call to action*/
+        
+        .flex-center {
+            color: #fff;
+        }
+        
+        .view {
+            background: url("img/assets/splash.jpg")no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="message-modal" aria-hidden="true">
+        <div class="modal-dialog modal-notify" style="width: 100%; max-width: 100%" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <p class="heading lead" id="modal-title"></p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body" style="text-align: center">
+                    <span id="message-modal-status"></span>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <!--Mask-->
+    <div class="view hm-black-strong">
+        <div class="full-bg-img flex-center">
+            <ul>
+                <li>
+                    <h1 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">CS6310 Course Management System</h1>
+                </li>
+                <li>
+                    <a href="administrator.html" class="btn btn-primary btn-lg wow "
+                       rel="nofollow">Administrator</a>
+                    <a href="instructor.html" class="btn btn-primary btn-lg wow "
+                       rel="nofollow">Instructor</a>
+                    <a href="student.html" class="btn btn-primary btn-lg wow "
+                       rel="nofollow">Student</a>
+                    <a href="weka.html" class="btn btn-primary btn-lg wow "
+                       rel="nofollow">Weka</a>
+                </li>
+                <li>
+                    <button id="init-data-button" target="_blank"
+                       href="#" class="btn btn-danger btn-xlarge wow"
+                       rel="nofollow">
+                        <i id="init-spinner"></i> Initialize Data
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/.Mask-->
+
+    <!-- Main container-->
+    <div class="container">
+
+        <div class="divider-new">
+            <h2 class="h2-responsive wow fadeIn" data-wow-delay="0.2s">About the Course Management System</h2>
+        </div>
+
+        <!--Section: About-->
+        <section id="about" class="wow fadeIn" data-wow-delay="0.2s">
+
+            <p>
+                Administrators can use the CS6310 Course Management System as a means to add new students, courses,
+                and instructors to the system. Additionally, use the Administrator dashboard to view the current semester
+                and begin the next semester.
+            </p>
+            <p>
+                Students can find themselves by searching by their UUID on the Student dashboard. Students will be able
+                to view their academic record, currently enrolled courses, and waitlisted courses. Finally, students
+                can request course enrollment through the Request Course feature.
+            </p>
+            <p>
+                Instructors can also find themselves by searching by UUID on the Instructor dashboard. Instructors are
+                welcome to search for courses to teach, view courses currently being taught, and assigning grades to
+                student records.
+            </p>
+            <p>
+                For statistics on popular courses and instructors, as well as course suggestions, visit the Weka page.
+            </p>
+            <p>
+                Use the Initialize Data tool with caution. All current data will be lost and reloaded from an initial
+                data snapshot.
+            </p>
+            <p>
+                For more information on the design of the CS6310 Course Management system, visit the following pages:
+                <ul>
+                    <li>
+                        <a href="https://www.lucidchart.com/documents/edit/c0028fd6-6120-4306-a4f2-d996320feb87">Deployment Diagram</a>
+                    </li>
+                    <li>
+                        <a href="https://www.lucidchart.com/invitations/accept/ba3449e8-75dc-4645-bd5e-ffc348d0824a">State Chart Diagram</a>
+                    </li>
+                    <li>
+                        <a href="https://www.lucidchart.com/documents/edit/dacf3661-682e-4e36-b6bf-f77b18ba4982">Class Diagram</a>
+                    </li>
+                    <li>
+                        <a href="https://www.lucidchart.com/invitations/accept/a78b65f4-7092-454b-9b19-ce5a1220989b">Entity Relation Diagram</a>
+                    </li>
+                    <li>
+                        <a href="https://youtu.be/wPiV4JeTOCc">Demo</a>
+                    </li>
+                </ul>
+            </p>
+
+        </section>
+        <!--Section: About-->
+    </div>
+    <!--/ Main container-->
+
+
+
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only">
+
+        <!--Footer Links-->
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-3 offset-lg-1 hidden-lg-down">
+                    <h5 class="title">Authors</h5>
+                    <ul>
+                        <li>Tingrong Tang</li>
+                        <li>Xin Tao</li>
+                        <li>Liangliang Yang</li>
+                        <li>Hok-Ming Zhong</li>
+                    </ul>
+                </div>
+                <!--/.First column-->
+
+            </div>
+        </div>
+        <!--/.Footer Links-->
+        <hr>
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2017
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/tether.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Animations init-->
+    <script>
+        new WOW().init();
+    </script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/index/index.js"></script>
+</body>
+
+</html>

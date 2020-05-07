@@ -1,0 +1,21 @@
+main {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+.widget-wrapper {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+
+.navbar {
+    background-color: #53463d;
+}
+
+footer.page-footer {
+    background-color: #53463d;
+    margin-top: 2rem;
+
+}

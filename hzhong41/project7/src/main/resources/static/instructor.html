@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Instructor Dashboard</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Template styles -->
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+
+        main {
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .widget-wrapper {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .divider-new {
+            margin-top: 0;
+        }
+
+        .navbar {
+            background-color: #414a5c;
+        }
+
+        footer.page-footer {
+            background-color: #414a5c;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<header>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-toggleable-md navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <strong>Course Management System</strong>
+            </a>
+        </div>
+    </nav>
+    <!--/.Navbar-->
+
+</header>
+
+<main>
+    <!-- Modal -->
+    <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="message-modal" aria-hidden="true">
+        <div class="modal-dialog modal-notify" style="width: 100%; max-width: 100%" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Body-->
+                <div class="modal-body" style="text-align: center">
+                    <span id="message-modal-status"></span>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <!--Main layout-->
+    <div class="container">
+        <div class="row">
+
+            <!--Sidebar-->
+            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+
+                <div class="widget-wrapper">
+                    <h4>Instructor</h4>
+                    <br>
+                    <div class="list-group">
+                        <a href="#" id="instructor-search-link"
+                           class="list-group-item active content-link"
+                           data-content-box="find-instructor-content">Find Instructor</a>
+
+                        <a href="#" id="instructor-information-link"
+                           class="list-group-item content-link"
+                           style="display: none"
+                           data-content-box="instructor-info-content">Instructor Detail</a>
+
+                        <a href="#" id="instructor-status-link"
+                           class="list-group-item content-link"
+                           style="display: none"
+                           data-content-box="instructor-status-content">Instructor Status</a>
+
+                        <a href="#" id="register-student-link"
+                           class="list-group-item content-link"
+                           style="display: none"
+                           data-content-box="register-student-content">Register as a Student</a>
+
+                        <a href="#" id="eligible-course-link"
+                           class="list-group-item content-link"
+                           style="display: none"
+                           data-content-box="eligible-course-content">Eligible Courses</a>
+
+                        <a href="#" id="teach-course-link"
+                           class="list-group-item content-link"
+                           style="display: none"
+                           data-content-box="teach-course-content">Teach a Course</a>
+
+                        <a href="#" id="assign-grade-link"
+                           class="list-group-item content-link"
+                           style="display: none"
+                           data-content-box="assign-grade-content">Assign Grade</a>
+                    </div>
+                </div>
+            </div>
+            <!--/.Sidebar-->
+
+            <!--Main column-->
+            <div class="col-lg-8">
+
+                <!--First row-->
+                <div class="row wow fadeIn" data-wow-delay="0.4s">
+                    <div class="col-lg-12">
+                        <div class="divider-new">
+                            <h2 class="h2-responsive" id="content-title">Instructor</h2>
+                        </div>
+
+                        <div id="instructor-content-wrapper">
+
+                            <!--Find Instructor-->
+                            <div role="listbox" id="find-instructor-content" class="content-box">
+                                <div class="card">
+                                    <div class="card-block">
+
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3><i class="fa fa-search"></i> Find Instructor</h3>
+                                            <hr class="mt-2 mb-2">
+                                        </div>
+
+                                        <!--Body-->
+                                        <div style="height: 30rem; overflow: scroll">
+                                            <ul class="list-group form-check" id="find-instructor-list">
+
+                                            </ul>
+                                        </div>
+                                        <div class="text-center">
+                                            <button class="btn btn-info" onclick="findInstructor()"><i class="fa fa-search"> </i> Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/Form without header-->
+                            </div>
+                            <!--/.Find Instructor-->
+
+                            <!--Instructor Information-->
+                            <div role="listbox" id="instructor-info-content" style="display:none" class="content-box">
+                                <div class="card">
+                                    <div class="card-block">
+
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3><i class="fa fa-user"></i> Instructor Detail</h3>
+                                            <hr class="mt-2 mb-2">
+                                        </div>
+
+                                        <!--Body-->
+                                        <div class="md-form">
+                                            <i class="fa fa-id-card prefix"></i>
+                                            <input type="text"
+                                                   id="instructor-detail-id"
+                                                   class="form-control"
+                                                   value=""
+                                                   readonly>
+                                            <label for="instructor-detail-id">ID</label>
+                                        </div>
+                                        <div class="md-form">
+                                            <i class="fa fa-user prefix"></i>
+                                            <input type="text"
+                                                   id="instructor-detail-name"
+                                                   class="form-control"
+                                                   value=""
+                                                   readonly>
+                                            <label for="instructor-detail-name">Name</label>
+                                        </div>
+                                        <div class="md-form">
+                                            <i class="fa fa-home prefix"></i>
+                                            <input type="text"
+                                                   id="instructor-detail-address"
+                                                   class="form-control"
+                                                   value=""
+                                                   readonly>
+                                            <label for="instructor-detail-address">Address</label>
+                                        </div>
+                                        <div class="md-form">
+                                            <i class="fa fa-mobile-phone prefix"></i>
+                                            <input type="text"
+                                                   id="instructor-detail-number"
+                                                   class="form-control"
+                                                   value=""
+                                                   readonly>
+                                            <label for="instructor-detail-number">Phone Number</label>
+                                        </div>
+                                        <div class="md-form">
+                                            <i class="fa fa-info prefix"> </i>
+                                            <input type="text"
+                                                   id="instructor-detail-status"
+                                                   class="form-control"
+                                                   value=""
+                                                   readonly>
+                                            <label for="instructor-detail-status">Status</label>
+                                        </div>
+                                        <div class="md-form">
+                                            <i class="fa prefix fa-certificate"> </i>
+                                            <input type="text"
+                                                   id="instructor-detail-current-course"
+                                                   class="form-control"
+                                                   value=""
+                                                   readonly>
+                                            <label for="instructor-detail-current-course">Current Course</label>
+                                        </div>
+                                        <div class="md-form">
+                                            <i class="fa prefix active"> </i>
+                                            <textarea type="textarea"
+                                                      class="md-textarea"
+                                                      id="instructor-detail-eligible"
+                                                      style="text-align: left; overflow: scroll; min-height: 10rem"
+                                                      readonly>
+                                            </textarea>
+                                            <label for="instructor-detail-eligible">Eligible Courses</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/Form without header-->
+                            </div>
+                            <!--/.Instructor Information-->
+
+                            <!--Instructor Status-->
+                            <div role="listbox" id="instructor-status-content" style="display: none" class="content-box">
+                                <div class="card">
+                                    <div class="card-block">
+
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3>
+                                                <i class="fa fa-user-plus" id="register-icon"></i>
+                                                <span id="instructor-status-title">Instructor Status</span>
+                                            </h3>
+                                            <hr class="mt-2 mb-2">
+                                        </div>
+
+                                        <!--Body-->
+                                        <ul>
+                                            <li><div id="status-content"></div></li>
+                                            <li>
+                                                <button class="btn btn-info" id="toggle-status-button" onclick="toggleInstructorStatus()">Yes</button>
+                                                <button class="btn btn-blue-grey" id="cancel-status-button" onclick="displayInfo()">No</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--/Form without header-->
+                            </div>
+                            <!--/.Instructor Status-->
+
+                            <!--Register as Student-->
+                            <div role="listbox" id="register-student-content" style="display: none" class="content-box">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3><i class="fa fa-mortar-board"></i> <span id="register-student-content-title"></span></h3>
+                                            <hr class="mt-2 mb-2">
+                                        </div>
+
+                                        <!--Body-->
+                                        <ul>
+                                            <li> <div id="register-student-content-body"></div></li>
+                                            <li>
+                                                <button class="btn btn-info" id="toggle-student-button" onclick="toggleStudentRole()">Yes</button>
+                                                <button class="btn btn-blue-grey" id="cancel-student-button" onclick="displayInfo()">No</button>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Register as Student-->
+
+                            <!--Update Eligible Courses-->
+                            <div role="listbox" id="eligible-course-content" style="display: none" class="content-box">
+                                <div class="card">
+                                    <div class="card-block">
+
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3><i class="fa fa-book"></i> Modify Eligible Courses</h3>
+                                            <hr class="mt-2 mb-2">
+                                        </div>
+
+                                        <!--Body-->
+                                        <div>
+                                            <ul class="list-group form-check" id="eligible-course-list">
+
+                                            </ul>
+                                            <br>
+                                            <button class="btn btn-info" onclick="updateEligibleCourses()">Update Eligible Courses</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--/Form without header-->
+                            </div>
+                            <!--/.Update Eligible Courses-->
+
+                            <!--Teach Course-->
+                            <div role="listbox" id="teach-course-content" style="display: none" class="content-box">
+                                <div class="card">
+                                    <div class="card-block">
+
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3><i class="fa fa-institution"></i> Teach a Course</h3>
+                                            <hr class="mt-2 mb-2">
+                                        </div>
+
+                                        <!--Body-->
+                                        <div id="teach-course-message">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--/Form without header-->
+                            </div>
+                            <!--/.Teach Course-->
+
+                            <!--Assign Grade-->
+                            <div role="listbox" id="assign-grade-content" style="display: none" class="content-box">
+                                <div class="card">
+                                    <div class="card-block">
+
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3><i class="fa fa-user-plus"></i> Assign Grade</h3>
+                                            <hr class="mt-2 mb-2">
+                                        </div>
+
+                                        <!--Body-->
+                                        <div id="find-course-records">
+                                            <form class="form-inline">
+                                                <fieldset class="form-group">
+                                                    <label for="assign-grade-term">Term</label>
+                                                    <select class="custom-select" id="assign-grade-term">
+                                                        <option value="Fall">Fall</option>
+                                                        <option value="Winter">Winter</option>
+                                                        <option value="Spring">Spring</option>
+                                                        <option value="Summer">Summer</option>
+                                                    </select>
+                                                </fieldset>
+
+                                                <fieldset class="form-group">
+                                                    <label for="assign-grade-year">Academic Year</label>
+                                                    <input type="text" id="assign-grade-year">
+                                                </fieldset>
+                                            </form>
+                                            <hr class="mt-2 mb-2">
+                                            <div style="height: 20rem; overflow: scroll">
+                                                <ul id="assign-grade-list" class="course-list list-group">
+                                                </ul>
+                                            </div>
+                                            <br>
+                                            <button class="btn btn-info" onclick="getCourseRecords()">Get Course Records</button>
+                                        </div>
+
+                                        <hr class="mt-2 mb-2">
+
+                                        <div id="course-records-list" style="display: none">
+                                            <h4> Course Records </h4>
+                                            <br>
+                                            <input type="hidden" id="assign-grade-course-id">
+                                            <span id="assign-grade-course-title"></span>
+                                            <span id="assign-grade-semester"><small name="term"></small> <small name="year"></small></span>
+                                            <div class="list-group justify-content-between" id="course-record-assign" style="height: 30rem; overflow: scroll">
+                                            </div>
+                                            <br>
+                                            <button class="btn btn-info" onclick="assignGrade()">Assign Grades</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/Form without header-->
+                            </div>
+                            <!--/.Assign Grade-->
+                        </div>
+                    </div>
+                </div>
+                <!--/.First row-->
+                <br>
+            </div>
+            <!--/.Main column-->
+        </div>
+    </div>
+    <!--/.Main layout-->
+</main>
+
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+
+    <!--Footer Links-->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-3 offset-lg-1 hidden-lg-down">
+                <h5 class="title">Authors</h5>
+                <ul>
+                    <li>Tingrong Tang</li>
+                    <li>Xin Tao</li>
+                    <li>Liangliang Yang</li>
+                    <li>Hok-Ming Zhong</li>
+                </ul>
+            </div>
+            <!--/.First column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+    <hr>
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/tether.min.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+
+<script>
+    new WOW().init();
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay_progress.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/instructor/instructor.js"></script>
+</body>
+
+</html>
